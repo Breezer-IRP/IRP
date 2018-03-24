@@ -1,4 +1,4 @@
-package com.breezer.vo;
+package com.breezer.irp.vo;
 
 public class UserVo {
 	private long idx;

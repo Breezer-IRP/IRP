@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
 
+#content {
+	width: 400px;
+	margin: 0 auto;
+}
+
 .login_message {
     padding: 0 0 18px;
     text-align: left;

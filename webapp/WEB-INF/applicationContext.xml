@@ -38,19 +38,19 @@
  	
 
 	<!-- for mysql  -->
-	<!--  
+	  
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/speakingnote" />       
-	-->
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/irp" />       
+
 		<!-- <property name="url" value="jdbc:mysql://127.0.0.1:3306/breezer_test" /> -->
-	<!-- 
+	 
 		<property name="username" value="breezer" />
 		<property name="password" value="qwe123!" />
-	 -->
+	 
 		<!-- mysql 8시간 응답 없을시 자동 종료 방지를 위한 설정 -->
-	<!-- 
+	
 		<property name="validationQuery" value="select 1" />
 	</bean>
 	
@@ -63,6 +63,6 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-	 -->
+	 
 
 </beans>

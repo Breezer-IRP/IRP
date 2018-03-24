@@ -15,6 +15,11 @@
 <!-- Jquery -->
 <script type="text/javascript"	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-3.2.1.js"></script>
 
+<!-- js -->
+<script
+	src="${pageContext.servletContext.contextPath }/assets/js/main/main.js"
+	type="text/javascript">
+</script>
 
 <title>IRP</title>
 </head>
@@ -22,7 +27,7 @@
 <body>
 	
 	<div id="content">
-		<form id="login_frm" name="login_frm" method="post" action="" onsubmit="">
+		<form id="login_frm" name="login_frm" method="post" action="/IRP/user/login" onsubmit="">
 			<input type="hidden" name="h_test1" value="0">
 			
 			
@@ -69,9 +74,9 @@
 				    		</div>
 				    		<div class="pw-input-box">
 				    			<label id="password-label" for="password" style="display: block;">비밀번호</label>
-				    			<input type="password" id="password" name="password" class="txt_tool" value="" maxlength="32">
+				    			<input type="password" id="pw" name="pw" class="txt_tool" value="" maxlength="32">
 				    		</div>
-				    		<button type="submit" class="btn-login" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'login', '');}catch(e){}">로그인</button>
+				    		<button type="submit" class="btn-login" onmousedown="try{login_submit();}catch(e){}">로그인</button>
 				    	</div>	
 				    	
 				    	<!-- 회원가입, 아이디,비밀번호 찾기  -->

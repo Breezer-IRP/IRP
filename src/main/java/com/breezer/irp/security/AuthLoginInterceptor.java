@@ -4,15 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.breezer.vo.UserVo;
+import com.breezer.irp.dto.JSONResult;
+import com.breezer.irp.service.user.UserLoginService;
+import com.breezer.irp.vo.UserVo;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 	
-	//@Autowired
-	//private UserLoginService userLoginService;
+	@Autowired
+	private UserLoginService userLoginService;
 	
 	@Override
 	public boolean preHandle( 
@@ -21,50 +25,39 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		Object handler
 		)
 		throws Exception {
-		System.out.println("====== UserLoginService ======");
+		System.out.println("====== AuthloginInterceptor ======");
 		
 
 		// 요청 url로 부터 변수 데이터를 받는다 
 		UserVo vo = new UserVo();
-		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 
-		// pictureUrl 에 &oe= 때문에 뒤에가 짤리므로 이것을 pictureUrl 에 붙여준다 
-		String pictureUrl = request.getParameter( "pictureUrl" ) +"&oe="+ request.getParameter( "oe" ); 
-		
+		vo.setId(id);
+		vo.setPw(pw);
+
 		// 받은 데이터로부터 user 정보를 가져온다 
-		// System.out.println("auth/user/login vo = " + vo );
-		//UserVo userVo = userLoginService.loginMessage(vo);
+		System.out.println("auth/user/login vo = " + vo );
+		UserVo userVo = userLoginService.loginMessage(vo);
 		
 		// userVo 가 null 이면 id가 존재하지 않으므로 다시 로그인 페이지로 보낸다 
-		/*if( userVo == null ) {
+		if( userVo == null ) {
 			System.out.println("authLogin : get user info fail");
 			//response.sendRedirect( request.getContextPath() + "/" );
 			
-			JSONResult jsonResult = JSONResult.success("login");
+			response.sendRedirect( request.getContextPath() +"/?a=b" );
+			return false;
+			/*
+			JSONResult jsonResult = JSONResult.fail("login");
 			String json = new ObjectMapper().writeValueAsString( jsonResult );
 		
 			response.setContentType( "application/json; charset=utf-8" );
 			response.getWriter().print( json );
-			return false;
-		}*/
+			return false;*/
+		}
 		
 		
-		// userVo가 존재는 하지만 id가 설정되어 있지 않은경우 id설정 페이지로 보낸다 
-		/*if( userVo.getId() == null ) {
-			//id 가 설정 안되면~ 입력하게 해야되 
-			System.out.println("authLogin : id is null");
-			
-			HttpSession session = request.getSession( true );
-			session.setAttribute( "authUser", userVo );
-			
-			JSONResult jsonResult = JSONResult.fail("login-id-null");
-			String json = new ObjectMapper().writeValueAsString( jsonResult );
-		
-			response.setContentType( "application/json; charset=utf-8" );
-			response.getWriter().print( json );
-		
-			return false;
-		}*/
+
 		
 		
 		// userVo, id 둘다 존재하므로 세션을 저장하고 mytour 페이지로 이동한다 
@@ -74,7 +67,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		// session 처리
 		HttpSession session = request.getSession( true );
-		//session.setAttribute( "authUser", userVo );
+		session.setAttribute( "authUser", userVo );
 		
 		//response.sendRedirect( request.getContextPath() +"/tour/mytour" );
 		//JSONResult jsonResult = JSONResult.success(userVo.getId());

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.breezer.vo.UserVo;
+import com.breezer.irp.vo.UserVo;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
@@ -70,11 +70,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		//id가 존재하지 않는 경우 
 		if (authUser.getId() == null) {
 			System.out.println("authentication fail -> id is null");
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/");
 			return false;
 		}
 		
+		return true;
 		
+		/*
 		//현재 주소를 가져온다 
 		String url = request.getRequestURL().toString();
 		//System.out.println("url : "+url);
@@ -96,7 +98,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			System.out.println("-> authentication fail ");
 			response.sendRedirect(request.getContextPath() + "/" + array[4]);
 			return false;
-		}
+		}*/
 		
 		
 	}
