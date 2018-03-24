@@ -73,7 +73,7 @@
 				    			<input type="text" id="id" name="id" class="txt_tool" value="">
 				    		</div>
 				    		<div class="pw-input-box">
-				    			<label id="password-label" for="password" style="display: block;">비밀번호</label>
+				    			<label id="password-label" for="pw" style="display: block;">비밀번호</label>
 				    			<input type="password" id="pw" name="pw" class="txt_tool" value="" maxlength="32">
 				    		</div>
 				    		<button type="submit" class="btn-login" onmousedown="try{login_submit();}catch(e){}">로그인</button>
