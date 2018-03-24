@@ -45,7 +45,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 			System.out.println("authLogin : get user info fail");
 			//response.sendRedirect( request.getContextPath() + "/" );
 			
-			response.sendRedirect( request.getContextPath() +"/?a=b" );
+			response.sendRedirect( request.getContextPath() +"/login" );
 			return false;
 			/*
 			JSONResult jsonResult = JSONResult.fail("login");
@@ -69,12 +69,13 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession( true );
 		session.setAttribute( "authUser", userVo );
 		
-		//response.sendRedirect( request.getContextPath() +"/tour/mytour" );
+		response.sendRedirect( request.getContextPath() +"/main" );
 		//JSONResult jsonResult = JSONResult.success(userVo.getId());
 		//String json = new ObjectMapper().writeValueAsString( jsonResult );
 	
 		//response.setContentType( "application/json; charset=utf-8" );
 		//response.getWriter().print( json );
+		
 		
 		
 		

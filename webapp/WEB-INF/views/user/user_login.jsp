@@ -10,18 +10,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- css -->
-<link href="${pageContext.servletContext.contextPath }/assets/css/main/main.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.servletContext.contextPath }/assets/css/user/user_login.css" rel="stylesheet" type="text/css">
 
 <!-- Jquery -->
 <script type="text/javascript"	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-3.2.1.js"></script>
 
 <!-- js -->
 <script
-	src="${pageContext.servletContext.contextPath }/assets/js/main/main.js"
+	src="${pageContext.servletContext.contextPath }/assets/js/user/user_login.js"
 	type="text/javascript">
 </script>
 
-<title>IRP</title>
+<title>IRP Login</title>
 </head>
 
 <body>

@@ -1,19 +1,17 @@
 package com.breezer.irp.controller.main;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.breezer.irp.security.Auth;
+
+@Auth
 @Controller("MainController")
-@RequestMapping("/")
+@RequestMapping("/main")
 public class MainController {
 	
-	@RequestMapping("/")
-	public String main( @RequestParam( value="a", required=false)String a 
-			) {
-		
-		System.out.println("a = "+a);
-		return "main/main";
+	@RequestMapping("")
+	public String main() {
+		return "main/main_index";
 	}
 }
